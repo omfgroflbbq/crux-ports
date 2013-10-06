@@ -1,0 +1,41 @@
+# Description: Highly configurable text editor
+# URL:         http://www.vim.org/
+# Maintainer: omfgroflbbq
+# Depends on:  ncurses acl
+
+name=vim
+version=7.4
+release=1337
+source=(ftp://ftp.vim.org/pub/vim/unix/${name}-${version}.tar.bz2)
+
+build () {
+    cd ${name}${version/./}/src
+
+    ./configure --prefix=/usr \
+                --mandir=/usr/man \
+                --without-x \
+                --disable-gui \
+                --enable-multibyte \
+                --disable-gpm \
+                --disable-nls \
+		--enable-rubyinterp \
+		--enable-pythoninterp \
+		--enable-python3interp \
+
+    make VIMRTDIR= 
+    make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks
+
+    mv $PKG/usr/share/vim/vimrc_example.vim $PKG/usr/share/vim/vimrc
+    rm -r $PKG/usr/{man/man?/vimtutor*,share/vim/{tutor,macros}}
+    rm $PKG/usr/share/vim/*/README.txt
+    install -Dm644 $SRC/${name}${version/./}/runtime/macros/matchit.txt $PKG/usr/share/vim/macros/matchit.txt
+    install -Dm644 $SRC/${name}${version/./}/runtime/macros/matchit.vim $PKG/usr/share/vim/macros/matchit.vim
+    ln -sf vim $PKG/usr/bin/evim
+    ln -sf /usr/bin/vim $PKG/usr/bin/vi
+    ln -sf vim.1.gz $PKG/usr/man/man1/ex.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/vi.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rvim.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/view.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/rview.1.gz
+    ln -sf vim.1.gz $PKG/usr/man/man1/gvim.1.gz
+}

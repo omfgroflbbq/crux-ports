@@ -1,0 +1,24 @@
+# Description: acsccid is a PC/SC driver for Linux/Mac OS X and it supports ACS CCID smart card readers. 
+# URL: http://acsccid.sourceforge.net/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: pcsc-lite
+
+name=acsccid
+version=1.0.5
+release=1337
+source=(http://downloads.sourceforge.net/$name/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install	    
+	
+	mkdir $PKG/etc
+	mv $PKG/usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/Info.plist $PKG/etc/libacsccid.plist
+	ln -s /etc/libacsccid.plist $PKG/usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/Info.plist
+}

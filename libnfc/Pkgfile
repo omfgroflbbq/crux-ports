@@ -1,0 +1,21 @@
+# Description: Public platform independent Near Field Communication (NFC) library
+# URL: https://code.google.com/p/libnfc/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libusb pcsc-lite
+
+name=libnfc
+version=1.7.0
+release=1337
+source=(https://libnfc.googlecode.com/files/${name}-${version}.tar.bz2)
+
+build() {
+        cd $name-$version
+
+        ./configure --prefix=/usr \
+        --mandir=/usr/man \
+        --with-drivers=acr122_usb
+
+        make
+        make DESTDIR=$PKG install 
+}

@@ -1,0 +1,25 @@
+# Description: Open source, NZB capable binary newsgrabber written in Python, server-oriented using a web-interface.
+# URL: sabnzbd.org
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: python pyopenssl pycheetah rarlinux par2cmdline
+
+name=sabnzbd
+version=0.7.16
+release=1
+source=(http://downloads.sourceforge.net/sabnzbdplus/SABnzbd-${version}-src.tar.gz)
+
+build() {
+	cd SABnzbd-$version
+
+	rm -r *txt interfaces/{Classic,Plush,Mobile} locale/* licenses
+	find po/ -iname "de*" -o -iname "es*" -o -iname "ro*" -o -iname "da*" -o -iname "fr*" -o -iname "nl*" -o -iname "nb*" -o -iname "pl*" -o -iname "pt*" -o -iname "sv*" |xargs rm -f	
+	find email -iname "*de.tmpl" -o -iname "*es.tmpl" -o -iname "*ro.tmpl" -o -iname "*da.tmpl" -o -iname "*fr.tmpl" -o -iname "*nl.tmpl" -o -iname "*nb.tmpl" -o -iname "*pl.tmpl" -o -iname "*pt_BR.tmpl" -o -iname "*sv.tmpl" |xargs rm
+	find . -iname "LICENSE*" -exec rm {} \;
+
+	mkdir -p $PKG/usr/share/sabnzbdplus $PKG/usr/bin
+	
+	cp -a . $PKG/usr/share/sabnzbdplus
+	echo "/usr/share/sabnzbdplus/SABnzbd.py &>/dev/null &" > $PKG/usr/bin/sabnzbd
+	chmod +x $PKG/usr/bin/sabnzbd
+}

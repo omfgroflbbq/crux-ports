@@ -1,0 +1,23 @@
+# Description: An open source client for Windows Remote Desktop Services
+# URL: http://www.rdesktop.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: xorg
+
+name=rdesktop
+version=1.7.1
+release=1
+source=(http://downloads.sourceforge.net/$name/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+	
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man
+	
+	make
+	make DESTDIR=$PKG install
+
+	rm -r $PKG/usr/share/rdesktop/keymaps/{ar,cs,da,de,de-ch,en-dv,en-gb,es,et,fi,fo,fr,fr-be,fr-ca,fr-ch,he,hr,hu,is,it,ja,ko,lt,lv,mk,nl,nl-be,no,pl,pt,pt-br,ru,sl,sv,th,tr}
+}

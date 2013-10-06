@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sed -i 's|# End of file|ca_certificate = /etc/ssl/certs/ca-certificates.crt|g' /etc/wgetrc

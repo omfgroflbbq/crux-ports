@@ -1,0 +1,29 @@
+# Description: Cisco VPN Client
+# URL: www.unix-ag.uni-kl.de/~massar/vpnc/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: 
+
+name=vpnc
+version=0.5.3
+release=1
+source=(http://www.unix-ag.uni-kl.de/~massar/$name/${name}-${version}.tar.gz
+	patch.diff)
+
+build() {
+	cd $name-$version
+
+	sed -i 's|^#OPENSSL|OPENSSL|g' Makefile
+	sed -i 's|/share/man||g' Makefile
+	sed -i 's|/etc/vpnc/|/usr/etc/vpnc/|' config.c
+	sed -i 's|/etc/vpnc.conf|/usr/etc/vpnc.conf|g' config.c
+
+	make
+
+	make DESTDIR=$PKG PREFIX=/usr MANDIR=/usr/man ETCDIR=/usr/etc/vpnc install
+	install -Dm644 vpnc.conf $PKG/usr/etc/vpnc/default.conf
+  	install -Dm755 vpnc-script $PKG/usr/etc/vpnc/vpnc-script
+
+	patch -i $SRC/patch.diff $PKG/usr/etc/vpnc/vpnc-script
+	rm -r $PKG/usr/share/
+}

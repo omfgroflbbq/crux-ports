@@ -1,0 +1,14 @@
+# Description: Common CA certificates
+# URL: http://curl.haxx.se/docs/caextract.html
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=ca-certificates
+version=20130205
+release=1337
+source=(cacerts.tar.bz2)
+
+build() {
+	cp -r $SRC/etc $PKG/
+}

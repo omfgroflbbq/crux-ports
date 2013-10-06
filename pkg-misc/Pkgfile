@@ -1,0 +1,16 @@
+# Description: Miscelaneous utilities for pkgutils
+# URL: http://sepen.it.cx/releases/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=pkg-misc
+version=1.0
+release=1
+source=(http://sepen.it.cx/releases/$name-$version.tar.bz2)
+
+build() {
+  install -d $PKG/usr/{bin,man/man1}
+  install -m 0755 $name-$version/pkg-* $PKG/usr/bin
+  install -m 0644 $name-$version/man/*.1 $PKG/usr/man/man1
+}

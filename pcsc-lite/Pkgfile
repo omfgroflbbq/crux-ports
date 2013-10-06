@@ -1,0 +1,33 @@
+# Description: PC/SC Architecture smartcard middleware library
+# URL: https://alioth.debian.org/projects/pcsclite/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: python
+
+name=pcsc-lite
+version=1.8.7
+release=1337
+source=(https://alioth.debian.org/frs/download.php/file/3842/${name}-${version}.tar.bz2)
+
+build() {
+        cd $name-$version
+
+        sed -i -e "s:python:python2:g" src/spy/pcsc-spy
+        ./configure --prefix=/usr \
+	    --mandir=/usr/man \
+            --sbindir=/usr/bin \
+            --enable-libudev \
+            --sysconfdir=/etc \
+            --enable-ipcdir=/var/run/pcscd \
+            --enable-usbdropdir=/usr/lib/pcsc/drivers
+
+        make
+
+        cd $SRC/$name-$version
+
+        make DESTDIR=$PKG install
+            
+        install -d $pkg/usr/lib/pcsc/drivers    
+	rm -r $PKG/usr/share
+
+}

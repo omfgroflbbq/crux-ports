@@ -1,0 +1,10 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/yget
+-rwxr-xr-x	root/root	usr/bin/yplay
+-rwxr-xr-x	root/root	usr/bin/yurl
+drwxr-xr-x	root/root	usr/man/
+drwxr-xr-x	root/root	usr/man/man1/
+-rw-r--r--	root/root	usr/man/man1/yget.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/yplay.1.gz -> yget.1.gz
+lrwxrwxrwx	root/root	usr/man/man1/yurl.1.gz -> yget.1.gz

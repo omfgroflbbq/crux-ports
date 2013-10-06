@@ -1,0 +1,33 @@
+# Description: rxvt fork with unicode and xft support
+# URL: http://software.schmorp.de/#rxvt-unicode
+# Maintainer: omfgroflbbq
+# Depends on: xorg-libxft, xorg-libxpm, perl xsel
+
+name=rxvt-unicode
+version=9.18
+release=1337
+source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.bz2
+	plugins.tar.bz2)
+
+build() {
+   cd $name-$version
+
+   ./configure --prefix=/usr --mandir=/usr/man \
+               --enable-utmp --enable-wtmp \
+               --enable-mousewheel \
+	       --enable-256-color
+
+   make
+
+   mkdir -p $PKG/usr/share/terminfo
+   make TERMINFO=$PKG/usr/share/terminfo DESTDIR=$PKG install
+
+   rm $PKG/usr/lib/urxvt/perl/*
+   rm $PKG/usr/man/man*/urxvt-*
+
+   install -Dm644 $SRC/clipboard $PKG/usr/lib/urxvt/perl/clipboard
+   install -Dm644 $SRC/url-select $PKG/usr/lib/urxvt/perl/url-select
+   install -Dm644 $SRC/matcher $PKG/usr/lib/urxvt/perl/matcher
+   install -Dm644 $SRC/readline $PKG/usr/lib/urxvt/perl/readline
+   install -Dm644 $SRC/keyboard-select $PKG/usr/lib/urxvt/perl/keyboard-select
+}

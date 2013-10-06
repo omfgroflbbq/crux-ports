@@ -1,0 +1,21 @@
+# Description: Linux ACPI client providing battery, AC power, and thermal readings
+# URL: http://sourceforge.net/projects/acpiclient 
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: glibc
+
+name=acpi
+version=1.6
+release=1
+source=(http://downloads.sourceforge.net/acpiclient/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man
+		
+	make
+	make DESTDIR=$PKG install
+}

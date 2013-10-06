@@ -1,0 +1,20 @@
+12a13
+> 	echo "  -ao       - Audio only" 1>&2
+20a22
+>         -ao  ) ao=1; shift 1;;
+26c28
+< yurl "$url" |awk -v fmts="$fmts" -v lang="$lang" '
+---
+> yurl "$url" |awk -v fmts="$fmts" -v lang="$lang" -v ao=$ao '
+45c47
+< 	t="MPlayer - " $0
+---
+> 	t="MPV - " $0
+62,63c64,67
+< 	if (u)
+< 		system("mplayer -cache 32768 -cache-min 1 -cache-seek-min 10" s " -title '\''" t "'\'' '\''" u "'\''")
+---
+> 	if (u && ao)
+> 		system("mpv -vo null -title '\''" t "'\'' '\''" u "'\'' < /dev/tty")
+> 	else if (u)
+> 		system("mpv --no-keepaspect -title '\''" t "'\'' '\''" u "'\'' < /dev/tty")

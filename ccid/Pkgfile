@@ -1,0 +1,23 @@
+# Description: A generic USB Chip/Smart Card Interface Devices driver
+# URL: http://pcsc-lite.alioth.debian.org/ccid.html
+# Maintainer: omfgroflbbq 
+# Packager: omfgroflbbq
+# Depends on: pcsc-lite libusb
+
+name=ccid
+version=1.4.12
+release=1337
+source=(https://alioth.debian.org/frs/download.php/file/3937/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	   --mandir=/usr/man \
+           --sysconfdir=/etc \
+           --enable-twinserial \
+           --enable-serialconfdir=/etc/reader.conf.d
+	
+	make
+	make DESTDIR=$PKG install
+}

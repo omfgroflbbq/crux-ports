@@ -1,0 +1,27 @@
+# Description: Non-DNS IP-to-country resolver C library & utils
+# URL: http://www.maxmind.com/app/c
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=geoip
+version=1.5.0
+release=1
+source=(http://www.maxmind.com/download/geoip/api/c/GeoIP-latest.tar.gz
+	http://www.maxmind.com/download/geoip/database/GeoLiteCity.dat.xz)
+
+build() {
+	cd GeoIP-$version
+	
+	./configure \
+	--prefix=/usr \
+	--sysconfdir=/usr/etc \
+	--mandir=/usr/man \
+	--disable-static
+	
+	make
+	make DESTDIR=$PKG install
+	rm -r $PKG/usr/etc/ $PKG/usr/share/GeoIP/*
+
+	xzcat $SRC/GeoLiteCity.dat.xz > $PKG/usr/share/GeoIP/GeoIPCity.dat
+}

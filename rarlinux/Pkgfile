@@ -1,0 +1,17 @@
+# Description: RAR is a powerful archive manager.
+# URL: rarlab.com
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=rarlinux
+version=4.2.0
+release=1
+source=(http://rarlab.com/rar/${name}-x64-${version}.tar.gz)
+
+build() {
+	cd rar
+	
+	install -D -m 755 unrar $PKG/usr/bin/unrar
+	install -D -m 755 rar $PKG/usr/bin/rar
+}

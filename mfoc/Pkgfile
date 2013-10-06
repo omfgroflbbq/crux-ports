@@ -1,0 +1,20 @@
+# Description: Mifare Classic Offline Cracker
+# URL: https://code.google.com/p/mfoc/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libnfc
+
+name=mfoc
+version=0.10.6
+release=1337
+source=(https://mfoc.googlecode.com/files/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install	    
+}

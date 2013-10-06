@@ -1,0 +1,21 @@
+# Description: XSel is a command-line program for getting and setting the contents of the X selection
+# URL: www.vergenet.net/~conrad/software/xsel/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: xorg
+
+name=xsel
+version=1.2.0
+release=1
+source=(http://www.vergenet.net/~conrad/software/$name/download/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+	
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man 
+
+	make
+	make DESTDIR=$PKG install
+}

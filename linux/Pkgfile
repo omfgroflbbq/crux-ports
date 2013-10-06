@@ -1,0 +1,15 @@
+# Description: Linux kernel
+# URL: http://kernel.org
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=linux
+version=3.11
+release=1337
+source=(kernel.tar.bz2)
+
+build() {
+
+	cp -a $SRC/{boot,lib} $PKG/
+}

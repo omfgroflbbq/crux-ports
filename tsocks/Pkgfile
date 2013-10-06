@@ -1,0 +1,28 @@
+# Description: A transparent SOCKS proxying library
+# URL: tsocks.sourceforge.net
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=tsocks
+version=1.8
+revision=beta5
+release=1
+source=(http://downloads.sourceforge.net/$name/${name}-${version}${revision}.tar.gz)
+
+build() {
+	cd $name-$version
+	
+	./configure \
+	--prefix=/usr \
+	--libdir=/usr/lib \
+	--mandir=/usr/man \
+	--disable-hostnames \
+	--enable-socksdns \
+	--with-conf=/usr/etc/tsocks.conf
+    
+	
+	make 
+	make DESTDIR=$PKG install
+	install -Dm644 tsocks.conf.complex.example $PKG/usr/etc/tsocks.conf
+}

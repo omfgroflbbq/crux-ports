@@ -1,0 +1,21 @@
+# Description: Off-the-Record Messaging Library and Toolkit
+# URL: http://www.cypherpunks.ca/otr/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libgcrypt
+
+name=libotr
+version=3.2.1
+release=1
+source=(http://www.cypherpunks.ca/otr/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man
+	
+	make
+	make DESTDIR=$PKG install
+}

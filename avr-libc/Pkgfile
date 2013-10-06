@@ -1,0 +1,22 @@
+# Description: The C runtime library for the AVR family of microcontrollers
+# URL: http://savannah.nongnu.org/projects/avr-libc/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: avr-gcc
+
+name=avr-libc
+version=1.8.0
+release=1337
+source=(http://download.savannah.gnu.org/releases/${name}/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure --build=$(./config.guess) \
+	--host=avr --prefix=/usr
+
+	make
+	make DESTDIR=$PKG install
+
+	rm -r $PKG/usr/share
+}

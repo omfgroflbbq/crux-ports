@@ -1,0 +1,19 @@
+# Description: libquvi
+# URL:
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=libquvi
+version=0.4.1
+release=1337
+source=(http://downloads.sourceforge.net/sourceforge/quvi/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr
+	make
+
+	make DESTDIR=$PKG/ install
+}

@@ -1,0 +1,32 @@
+# Description: Fast CPU emulator and virtualizer
+# URL: http://qemu.org
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libsdl alsa-lib
+
+name=qemu
+version=1.6.0
+release=1337
+source=(http://wiki.qemu-project.org/download/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr \
+	--libexecdir=/usr/lib/qemu \
+	--target-list=x86_64-softmmu,arm-softmmu\
+	--audio-drv-list=alsa \
+	--enable-kvm 
+	
+	make all qemu.1 qemu-img.1 qemu-nbd.8 fsdev/virtfs-proxy-helper.1
+	make DESTDIR=$PKG libexecdir=/usr/lib/qemu install
+	make qemu.1 qemu-img.1 qemu-nbd.8
+  	install -D -m 644 qemu.1 $PKG/usr/man/man1/qemu.1
+	install -D -m 644 qemu-img.1 $PKG/usr/man/man1/qemu-img.1
+  	install -D -m 644 qemu-nbd.8 $PKG/usr/man/man8/qemu-nbd.8
+
+	rm -r $PKG/usr/share/qemu/keymaps/{ar,bepo,da,de,de-ch,en-gb,es,et,fi,fo,fr,fr-be,fr-ca,fr-ch,hr,hu,is,it,ja,lt,lv,mk,nl,nl-be,no,pl,pt,pt-br,ru,sl,sv,th,tr} $PKG/usr/etc/
+	chmod u+s $PKG/usr/lib/qemu/qemu-bridge-helper
+}

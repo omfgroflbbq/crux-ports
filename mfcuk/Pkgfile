@@ -1,0 +1,20 @@
+# Description: MiFare Classic Universal toolKit
+# URL: https://code.google.com/p/mfcuk/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libnfc
+
+name=mfcuk
+version=0.3.8
+release=1337
+source=(https://mfcuk.googlecode.com/files/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install	    
+}

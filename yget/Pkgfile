@@ -1,0 +1,20 @@
+# Description: yget is (yet another) simple tool to get videos off from youtube. 
+# URL: http://repo.hu/projects/yget/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: curl
+
+name=yget
+version=2.6.0
+release=1
+source=(http://repo.hu/projects/$name/releases/${name}-${version}.tar.bz2
+	patch.diff)
+
+build() {
+	cd $name-$version
+	
+	sed -i "s|share/man|man|g" Makefile 
+	make prefix=$PKG/usr install
+	
+	patch -i $SRC/patch.diff $PKG/usr/bin/yplay
+}

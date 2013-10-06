@@ -1,0 +1,64 @@
+# Description: The GNU AVR Compiler Collection
+# URL: http://gcc.gnu.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: avr-binutils libmpc
+
+name=avr-gcc
+version=4.8.1
+release=1337
+source=(http://ftp.gnu.org/gnu/gcc/gcc-${version}/gcc-${version}.tar.bz2)
+
+build() {
+        export CFLAGS="-O2 -pipe"
+	export CXXFLAGS="-O2 -pipe"
+
+	cd gcc-$version
+	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" gcc/configure
+  
+	echo ${version} > gcc/BASE-VER
+	cd $SRC
+	mkdir gcc-build && cd gcc-build
+
+	../gcc-${version}/configure --prefix=/usr \
+        --disable-install-libiberty \
+        --disable-libssp \
+        --disable-libstdcxx-pch \
+        --disable-libunwind-exceptions \
+        --disable-linker-build-id \
+        --disable-nls \
+        --disable-werror \
+        --enable-__cxa_atexit \
+	--enable-multilib \
+        --enable-checking=release \
+        --enable-clocale=gnu \
+        --enable-gnu-unique-object \
+        --enable-gold \
+        --enable-languages=c,c++ \
+        --enable-ld=default \
+        --enable-lto \
+        --enable-plugin \
+        --enable-shared \
+        --libdir=/usr/lib \
+        --libexecdir=/usr/lib \
+        --mandir=/usr/man \
+	--without-headers \
+        --prefix=/usr \
+        --target=avr \
+        --with-as=/usr/bin/avr-as \
+        --with-gnu-as \
+        --with-gnu-ld \
+        --with-ld=/usr/bin/avr-ld \
+        --with-plugin-ld=ld.gold \
+        --with-system-zlib
+
+	make
+	make -j 4 DESTDIR=$PKG install
+
+	find $PKG/usr/lib -type f -name "*.a" -exec /usr/bin/avr-strip --strip-debug '{}' \;
+
+	rm -rf $PKG/usr/share/man/man7
+	rm -rf $PKG/usr/share/info
+}

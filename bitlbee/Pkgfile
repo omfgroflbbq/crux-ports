@@ -1,0 +1,32 @@
+# Description: Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC
+# URL: http://www.bitlbee.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libotr glib openssl ca-certificates
+
+name=bitlbee
+version=3.2
+release=1
+source=(http://get.bitlbee.org/src/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man \
+	--msn=1 \
+	--jabber=1 \
+	--oscar=0 \
+	--yahoo=0 \
+	--twitter=1 \
+	--otr=1 \
+	--ssl=openssl
+
+  	sed -i 's|EFLAGS+=-lssl -lcrypto|EFLAGS+=-lssl -lcrypto -lgcrypt|' Makefile.settings
+
+	make
+	make DESTDIR=$PKG install
+	
+#	rm -r $PKG/usr/share/
+}

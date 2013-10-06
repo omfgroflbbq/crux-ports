@@ -1,0 +1,19 @@
+# Description: lightweight PDF viewer and toolkit written in portable C
+# URL: http://mupdf.com/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: xorg
+
+name=mupdf
+version=1.3
+release=1337
+source=(https://mupdf.googlecode.com/files/$name-$version-source.tar.gz)
+build() {
+	cd $name-$version-source
+	
+	rm -r thirdparty/{freetype*,jpeg*,zlib*}
+	sed -i 's/MUBUSY/MUTOOL/' Makefile
+	make prefix=$PKG/usr mandir=$PKG/usr/man install
+	
+    	rm -r $PKG/usr/{include,lib,share,bin/mupdf-x11-curl}
+}

@@ -1,0 +1,16 @@
+# Description: Cheetah is an open source template engine and code generation tool, written in Python.
+# URL: www.cheetahtemplate.org
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: python
+
+name=pycheetah
+version=2.4.4
+release=1
+source=(http://pypi.python.org/packages/source/C/Cheetah/Cheetah-${version}.tar.gz)
+
+build() {
+	cd Cheetah-$version
+	python setup.py install --root=$PKG
+        find $PKG -name '*egg-info' | xargs rm -rf
+}

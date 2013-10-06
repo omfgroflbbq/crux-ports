@@ -1,0 +1,31 @@
+# Description: Reads your hdd temperature using S.M.A.R.T values.
+# URL: https://savannah.nongnu.org/projects/hddtemp/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=hddtemp
+version=0.3-beta15
+patchver=52
+release=1
+source=(http://download.savannah.gnu.org/releases/$name/${name}-${version}.tar.bz2
+	http://nongnu.askapache.com/$name/${name}.db
+	http://ftp.debian.org/debian/pool/main/h/$name/${name}_${version}-${patchver}.diff.gz)
+
+build() {
+	cd $name-$version
+	
+	gzip -d $SRC/hddtemp_0.3-beta15-52.diff.gz
+	patch -p1 -i $SRC/hddtemp_0.3-beta15-52.diff
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man \
+	--with-db-path=/usr/etc/hddtemp.db
+
+	make
+	make DESTDIR=$PKG install
+	install -Dm644 $SRC/hddtemp.db $PKG/usr/etc/hddtemp.db
+	
+	rm -r $PKG/usr/share/
+}

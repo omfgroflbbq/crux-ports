@@ -1,0 +1,17 @@
+# Description: firmware images for Intel Centrino Advanced-N 6205 
+# URL: http://intellinuxwireless.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=iwlwifi-firmware
+chipset=iwlwifi-6000g2a
+revision=6
+version=18.168.6.1
+release=1
+source=("http://wireless.kernel.org/en/users/Drivers/iwlwifi?action=AttachFile&do=get&target=${chipset}-ucode-${version}.tgz")
+
+build() {
+	cd $chipset-ucode-$version
+	install -Dm644 ${chipset}-${revision}.ucode $PKG/lib/firmware/${chipset}-${revision}.ucode
+}

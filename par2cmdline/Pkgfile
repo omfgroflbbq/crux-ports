@@ -1,0 +1,17 @@
+# Description: par2cmdline 0.4 with Intel Threading Building Blocks 2.2
+# URL: www.chuchusoft.com/par2_tbb/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on:
+
+name=par2cmdline
+version=20100203
+release=1
+source=(http://www.chuchusoft.com/par2_tbb/${name}-0.4-tbb-${version}-lin64.tar.gz)
+
+build() {
+	cd $name-0.4-tbb-$version-lin64
+	install -D -m 755 libtbb.so.2 $PKG/usr/lib/libtbb.so.2
+	ln -sf libtbb.so.2 $PKG/usr/lib/libtbb.so
+	install -D -m 755 par2 $PKG/usr/bin/par2
+}

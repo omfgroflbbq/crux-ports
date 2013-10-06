@@ -1,0 +1,21 @@
+# Description: A packet sniffer that displays TCP connections similarly to 'top'.
+# URL: http://www.rhythm.cx/~steve/devel/tcptrack/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libpcap
+
+name=tcptrack
+version=1.4.2
+release=1
+source=(http://ftp.debian.org/debian/pool/main/t/$name/${name}_${version}.orig.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install
+}

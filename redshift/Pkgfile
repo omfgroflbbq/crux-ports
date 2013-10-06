@@ -1,0 +1,25 @@
+# Description: Adjusts the color temperature of your screen according to your surroundings.
+# URL: http://jonls.dk/redshift/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: xorg
+
+name=redshift
+version=1.7
+release=1
+source=(https://launchpad.net/$name/trunk/$version/+download/${name}-${version}.tar.bz2)
+
+build() {
+	cd $name-$version
+	
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man \
+	--disable-nls \
+	--disable-gui
+	
+	make
+	make DESTDIR=$PKG install
+	
+	rm -r $PKG/usr/share/
+}

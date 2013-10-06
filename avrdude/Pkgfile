@@ -1,0 +1,20 @@
+# Description: AVRDUDE is an utility to download/upload/manipulate the ROM and EEPROM contents of AVR microcontrollers using the in-system programming technique (ISP).
+# URL: http://www.nongnu.org/avrdude/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: avr-libc avr-gcc
+
+name=avrdude
+version=5.11
+release=1337
+source=(http://download.savannah.gnu.org/releases/$name/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man 
+	make	
+	
+	make DESTDIR=$PKG install
+}

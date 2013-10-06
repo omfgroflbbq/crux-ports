@@ -1,0 +1,41 @@
+# Description: A set of programs to assemble and manipulate binary and object files for the AVR architecture
+# URL: http://www.gnu.org/software/binutils/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: 
+
+name=avr-binutils
+version=2.23.2
+release=1337
+source=(ftp://ftp.gnu.org/gnu/binutils/binutils-${version}.tar.bz2)
+
+build() {
+	cd binutils-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man \
+	--target=avr \
+	--disable-nls \
+	--with-lib-path=/usr/lib \
+        --enable-ld=default \
+        --enable-gold \
+        --enable-plugins \
+        --enable-threads \
+        --with-pic \
+        --enable-shared \
+        --disable-werror \
+        --enable-multilib \
+        --build=${config_guess} \
+        --target=avr
+
+	make tooldir=/usr
+	make check
+	make tooldir=/usr DESTDIR=$PKG install
+    
+	rm -r $PKG/usr/share
+	rm $PKG/usr/lib/libiberty.a
+
+	for bin in ar as nm objcopy objdump ranlib strip ; do
+	  rm -f $PKG/usr/bin/${bin}
+	done
+}

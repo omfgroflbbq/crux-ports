@@ -1,0 +1,31 @@
+# Description: mpv
+# URL:
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libass ffmpeg
+# Nice to have: libquvi libdvdread
+
+name=mpv
+version=0.1.7
+release=1337
+source=(https://github.com/$name-player/$name/archive/v$version.tar.gz
+	mpv.1
+	mpv.conf)
+
+build() {
+	cd $name-$version
+	unset CFLAGS LDFLAGS
+
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man \
+	--disable-radio \
+	--disable-radio-capture \
+	--disable-radio-v4l2 \
+	--disable-lircc \
+
+	make -j 4
+	make DESTDIR=$PKG/ install
+	install -Dm644 $SRC/mpv.1 $PKG/usr/man/man1/mpv.1
+	install -Dm644 $SRC/mpv.conf $PKG/usr/etc/mpv/mpv.conf
+}

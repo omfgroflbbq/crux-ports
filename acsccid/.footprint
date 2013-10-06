@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	etc/
+-rw-r--r--	root/root	etc/libacsccid.plist
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/pcsc/
+drwxr-xr-x	root/root	usr/lib/pcsc/drivers/
+drwxr-xr-x	root/root	usr/lib/pcsc/drivers/ifd-acsccid.bundle/
+drwxr-xr-x	root/root	usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/
+lrwxrwxrwx	root/root	usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/Info.plist -> /etc/libacsccid.plist
+drwxr-xr-x	root/root	usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/Linux/
+-rwxr-xr-x	root/root	usr/lib/pcsc/drivers/ifd-acsccid.bundle/Contents/Linux/libacsccid.so

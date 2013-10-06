@@ -1,0 +1,20 @@
+# Description: A dynamic window manager for X
+# URL: http://dwm.suckless.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: xorg xorg-libxinerama
+
+name=dwm
+version=5.8.2
+release=1
+source=(http://dl.suckless.org/dwm/${name}-${version}.tar.gz
+	config.def.h
+	dwm.c)
+
+build() {
+	cd $name-$version
+
+	cp $SRC/{config.def.h,dwm.c} .
+	make
+	make PREFIX=$PKG/usr MANPREFIX=$PKG/usr/man/ install
+}

@@ -1,0 +1,2 @@
+^usr/avr/lib/.*/.*$
+^usr/avr/lib/.*$

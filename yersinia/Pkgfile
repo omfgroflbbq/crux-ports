@@ -1,0 +1,22 @@
+# Description: Mifare Classic Offline Cracker
+# URL: https://code.google.com/p/mfoc/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libpcap libnet
+
+name=yersinia
+version=0.7
+release=1337
+source=(http://www.yersinia.net/download/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+
+	./configure --prefix=/usr \
+	--mandir=/usr/man \
+	--with-pcap-includes=/usr/include/pcap \
+	--disable-gtk
+
+	make
+	make DESTDIR=$PKG install	    
+}
