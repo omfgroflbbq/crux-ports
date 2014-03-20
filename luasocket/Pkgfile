@@ -1,0 +1,17 @@
+# Description: 'Networking support library for the Lua language'
+# URL: 
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: lua51
+
+name=luasocket
+version=3.0-rc1
+release=1337
+source=("https://github.com/diegonehab/$name/archive/v${version}.tar.gz")
+
+build() {
+  cd ${name}-${version}
+
+  make LUAV=5.2
+  make DESTDIR=$PKG LUAV=5.2 prefix=/usr install-unix
+}

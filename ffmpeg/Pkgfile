@@ -1,0 +1,48 @@
+# Description: Complete solution to record, convert and stream audio and video.
+# URL: http://ffmpeg.org/
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: imlib2 lame libass libsdl libtheora libva libxvid rtmpdump speex x264 openssl
+
+name=ffmpeg
+version=2.1.1
+release=1337
+source=(http://ffmpeg.org/releases/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--mandir=/usr/man \
+		--disable-debug \
+		--disable-doc \
+		--enable-avfilter \
+		--enable-avresample \
+		--enable-dxva2 \
+		--enable-fontconfig \
+		--enable-libass \
+		--enable-libfreetype \
+		--enable-gpl \
+		--enable-nonfree \
+		--enable-openssl \
+		--enable-libmp3lame \
+		--enable-librtmp \
+		--enable-libspeex \
+		--enable-libtheora \
+		--enable-libvorbis \
+		--enable-libx264 \
+		--enable-libxvid \
+		--enable-vaapi \
+		--enable-pic \
+		--enable-postproc \
+		--enable-pthreads \
+		--enable-shared \
+		--enable-swresample \
+		--enable-version3 \
+		--enable-x11grab
+
+	[ "$CC" ] || CC=gcc
+	make CC="$CC" SHARED_PP='yes' $MAKEFLAGS
+	make DESTDIR=$PKG install install-man
+}

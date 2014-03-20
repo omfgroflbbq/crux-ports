@@ -5,10 +5,12 @@
 # Depends on:
 
 name=ca-certificates
-version=20130205
+version=20131205
 release=1337
 source=(cacerts.tar.bz2)
 
 build() {
-	cp -r $SRC/etc $PKG/
+  install -Dm 644 $SRC/cacert.pem $PKG/etc/ssl/cert.pem
+  mkdir $PKG/etc/ssl/certs/
+  ln -s /etc/ssl/cert.pem $PKG/etc/ssl/certs/ca-certificates.crt
 }

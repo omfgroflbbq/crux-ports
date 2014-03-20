@@ -26,13 +26,7 @@ drwxr-xr-x	root/root	usr/share/firefox/browser/icons/
 -rw-r--r--	root/root	usr/share/firefox/browser/icons/mozicon128.png
 -rw-r--r--	root/root	usr/share/firefox/browser/omni.ja
 drwxr-xr-x	root/root	usr/share/firefox/browser/searchplugins/
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/amazondotcom.xml
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/bing.xml
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/eBay.xml
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/google.xml
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/twitter.xml
 -rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/wikipedia.xml
--rw-r--r--	root/root	usr/share/firefox/browser/searchplugins/yahoo.xml
 -rw-r--r--	root/root	usr/share/firefox/chrome.manifest
 drwxr-xr-x	root/root	usr/share/firefox/components/
 -rw-r--r--	root/root	usr/share/firefox/components/components.manifest

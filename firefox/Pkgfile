@@ -5,13 +5,13 @@
 # Depends on: dbus-glib glib pango atk pango cairo libidl  gtk gdk-pixbuf
 
 name=firefox
-version=24.0
+version=28.0
 release=1337
-source=(ftp://ftp.mozilla.org/pub/firefox/releases/latest/linux-x86_64/en-US/${name}-${version}.tar.bz2)
+source=(ftp://ftp.mozilla.org/pub/firefox/releases/$version/linux-x86_64/en-US/${name}-${version}.tar.bz2)
 
 build() {
 	mkdir -p $PKG{/usr/share,/usr/bin}
 	cp -r firefox $PKG/usr/share
 	ln -s /usr/share/firefox/firefox $PKG/usr/bin/firefox
-
+	rm -r $PKG/usr/share/firefox/browser/searchplugins/{amazondotcom.xml,bing.xml,eBay.xml,google.xml,twitter.xml,yahoo.xml}
 }

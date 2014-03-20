@@ -2,18 +2,19 @@
 # URL:
 # Maintainer: omfgroflbbq
 # Packager: omfgroflbbq
-# Depends on:
+# Depends on: libproxy lua 
 
 name=libquvi
-version=0.4.1
+version=0.9.4
 release=1337
-source=(http://downloads.sourceforge.net/sourceforge/quvi/${name}-${version}.tar.gz)
+source=(http://downloads.sourceforge.net/sourceforge/quvi/${name}-${version}.tar.xz)
+
 
 build() {
 	cd $name-$version
-
+	
 	./configure --prefix=/usr
 	make
 
-	make DESTDIR=$PKG/ install
+	make datarootdir=/usr DESTDIR=$PKG/ install
 }

@@ -2,7 +2,7 @@
 # URL: http://www.nongnu.org/avrdude/
 # Maintainer: omfgroflbbq
 # Packager: omfgroflbbq
-# Depends on: avr-libc avr-gcc
+# Depends on: avr-gcc avr-libc
 
 name=avrdude
 version=5.11

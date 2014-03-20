@@ -8,11 +8,12 @@ name=fonts
 version=1.0
 release=1
 source=(http://font.gohu.org/gohufont-2.0.tar.gz
-	DejaVuSerif.ttf)
+	fonts.tbz2)
 
 build() {
 	cd gohufont-2.0
 	install -Dm644 gohufont-11.pcf.gz $PKG/usr/share/fonts/X11/misc/gohufont-11.pcf.gz
 	install -Dm644 gohufont-11b.pcf.gz $PKG/usr/share/fonts/X11/misc/gohufont-11b.pcf.gz
 	install -Dm644  $SRC/DejaVuSerif.ttf $PKG/usr/share/fonts/X11/TTF/DejaVuSerif.ttf
+	install -Dm644  $SRC/fonts.dir $PKG/usr/share/fonts/X11/misc/fonts.dir
 }

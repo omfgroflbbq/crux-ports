@@ -7,9 +7,9 @@
 name=mupdf
 version=1.3
 release=1337
-source=(https://mupdf.googlecode.com/files/$name-$version-source.tar.gz)
+source=(mupdf.tbz2)
 build() {
-	cd $name-$version-source
+	cd $name
 	
 	rm -r thirdparty/{freetype*,jpeg*,zlib*}
 	sed -i 's/MUBUSY/MUTOOL/' Makefile

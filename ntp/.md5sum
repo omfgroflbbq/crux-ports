@@ -1,0 +1,5 @@
+00df80a84ec9528fcfb09498075525bc  ntp-4.2.6p5.tar.gz
+0c5675c46a226de4504f5b855326b6b7  ntp-64bit.diff
+8fe227a2197547c6facd13e9ea4f91a9  ntp.conf
+eed11bcd8b443bc9b2c96dc5a33cbdc0  ntpd
+3714dba66445d1b41d6c699447c7a65e  ntpdate

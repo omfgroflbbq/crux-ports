@@ -3,7 +3,7 @@ drwxr-xr-x	root/root	boot/
 drwxr-xr-x	root/root	lib/
 drwxr-xr-x	root/root	lib/modules/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/
-lrwxrwxrwx	root/root	lib/modules/<kernel-version>/build -> /usr/src/linux-3.11
+lrwxrwxrwx	root/root	lib/modules/<kernel-version>/build -> /usr/ports/work/linux-3.13
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/arch/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/arch/x86/
@@ -13,17 +13,14 @@ drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/arch/x86/kvm/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/arch/x86/kvm/kvm-intel.ko
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/arch/x86/kvm/kvm.ko
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/
+drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/gpu/
+drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/gpu/drm/
+-rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/gpu/drm/drm_kms_helper.ko
+drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/gpu/drm/i915/
+-rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/gpu/drm/i915/i915.ko
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/input/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/input/mouse/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/input/mouse/psmouse.ko
-drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/media/
-drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/media/usb/
-drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/media/usb/uvc/
--rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/media/usb/uvc/uvcvideo.ko
-drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/media/v4l2-core/
--rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/media/v4l2-core/videobuf2-core.ko
--rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/media/v4l2-core/videobuf2-memops.ko
--rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/media/v4l2-core/videobuf2-vmalloc.ko
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/mmc/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/mmc/card/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/mmc/card/mmc_block.ko
@@ -57,6 +54,10 @@ drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/vhost/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/vhost/vhost.ko
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/vhost/vhost_net.ko
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/vhost/vringh.ko
+drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/drivers/video/
+-rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/video/cfbcopyarea.ko
+-rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/video/cfbfillrect.ko
+-rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/drivers/video/cfbimgblt.ko
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/net/
 drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/net/ipv4/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/kernel/net/ipv4/ipip.ko
@@ -100,4 +101,4 @@ drwxr-xr-x	root/root	lib/modules/<kernel-version>/kernel/sound/usb/
 -rw-r--r--	root/root	lib/modules/<kernel-version>/modules.softdep
 -rw-r--r--	root/root	lib/modules/<kernel-version>/modules.symbols
 -rw-r--r--	root/root	lib/modules/<kernel-version>/modules.symbols.bin
-lrwxrwxrwx	root/root	lib/modules/<kernel-version>/source -> /usr/src/linux-3.11
+lrwxrwxrwx	root/root	lib/modules/<kernel-version>/source -> /usr/ports/work/linux-3.13

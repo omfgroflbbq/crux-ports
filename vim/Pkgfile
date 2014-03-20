@@ -1,7 +1,7 @@
 # Description: Highly configurable text editor
 # URL:         http://www.vim.org/
 # Maintainer: omfgroflbbq
-# Depends on:  ncurses acl
+# Depends on:  ncurses acl python
 
 name=vim
 version=7.4
@@ -18,9 +18,8 @@ build () {
                 --enable-multibyte \
                 --disable-gpm \
                 --disable-nls \
-		--enable-rubyinterp \
-		--enable-pythoninterp \
-		--enable-python3interp \
+		--enable-pythoninterp=yes \
+		--enable-python3interp=yes 
 
     make VIMRTDIR= 
     make VIMRTDIR= DESTDIR=$PKG installvimbin installruntime installlinks

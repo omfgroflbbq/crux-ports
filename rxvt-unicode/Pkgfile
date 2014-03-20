@@ -4,7 +4,7 @@
 # Depends on: xorg-libxft, xorg-libxpm, perl xsel
 
 name=rxvt-unicode
-version=9.18
+version=9.19
 release=1337
 source=(http://dist.schmorp.de/$name/Attic/$name-$version.tar.bz2
 	plugins.tar.bz2)

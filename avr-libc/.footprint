@@ -339,6 +339,7 @@ drwxr-xr-x	root/root	usr/avr/lib/avr5/
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm16hva.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm16hva2.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm16hvb.o
+-rw-r--r--	root/root	usr/avr/lib/avr5/crtm16hvbrevb.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm16m1.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm16u4.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm3000.o
@@ -364,6 +365,7 @@ drwxr-xr-x	root/root	usr/avr/lib/avr5/
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm329pa.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm32c1.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm32hvb.o
+-rw-r--r--	root/root	usr/avr/lib/avr5/crtm32hvbrevb.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm32m1.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm32u4.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm32u6.o
@@ -382,6 +384,8 @@ drwxr-xr-x	root/root	usr/avr/lib/avr5/
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm645p.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm649.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm6490.o
+-rw-r--r--	root/root	usr/avr/lib/avr5/crtm6490a.o
+-rw-r--r--	root/root	usr/avr/lib/avr5/crtm6490p.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm649a.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm649p.o
 -rw-r--r--	root/root	usr/avr/lib/avr5/crtm64c1.o

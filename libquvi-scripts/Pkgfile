@@ -2,18 +2,17 @@
 # URL:
 # Maintainer: omfgroflbbq
 # Packager: omfgroflbbq
-# Depends on:
+# Depends on: libquvi lua luasocket luaexpat luabitop
 
 name=libquvi-scripts
-version=0.4.14
+version=0.9.20131130
 release=1337
-source=(http://downloads.sourceforge.net/sourceforge/quvi/${name}-${version}.tar.xz)
+source=("http://downloads.sourceforge.net/sourceforge/quvi/${name}-${version}.tar.xz")
 
 build() {
 	cd $name-$version
 
-	./configure --prefix=/usr --with-nsfw --with-nlfy
+	./configure --prefix=/usr --mandir=/usr/man --enable-nsfw --with-geoblocked
 	make
-      
-	make DESTDIR=$PKG/ install
+	make DESTDIR=$PKG install
 }

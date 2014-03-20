@@ -1,0 +1,30 @@
+# Description: "A library that provides automatic proxy configuration management"
+# URL: http://libproxy.googlecode.com
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: cmake networkmanager automoc4 python2 kdelibs perl
+
+name=libproxy
+version=0.4.11
+release=1337
+source=(http://libproxy.googlecode.com/files/${name}-${version}.tar.gz)
+
+build() {
+  cd $name-$version
+
+  mkdir build
+  cmake ../${name}-${version} \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DLIBEXEC_INSTALL_DIR=/usr/lib/libproxy \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DWITH_WEBKIT=OFF \
+    -DWITH_KDE=OFF \
+    -DWITH_GNOME=OFF \
+    -DWITH_GNOME3=OFF \
+    -DCMAKE_CXX_FLAGS="${CXXFLAGS}" \
+    -DCMAKE_C_FLAGS="${CFLAGS}"
+
+  make
+  make DESTDIR=$PKG install
+}

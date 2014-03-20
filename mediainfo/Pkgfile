@@ -1,0 +1,18 @@
+# Description: "supplies technical and tag information about a video or audio file"
+# URL: http://mediainfo.sourceforge.net
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libtool automake autoconf libmediainfo
+
+name=mediainfo
+version=0.7.65
+release=1337
+source=(http://downloads.sourceforge.net/mediainfo/${name}_${version}.tar.bz2)
+
+build() {
+  cd $SRC/MediaInfo/Project/GNU/CLI
+  sh ./autogen
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+}

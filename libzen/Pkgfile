@@ -1,0 +1,23 @@
+# Description: "shared library for libmediainfo and mediainfo"
+# URL: http://mediainfo.sourceforge.net
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libtool automake autoconf
+
+name=libzen
+version=0.4.29
+release=1337
+source=(http://downloads.sourceforge.net/zenlib/${name}_${version}.tar.bz2)
+
+build() {
+  cd $SRC/ZenLib/Project/GNU/Library
+  [ -x configure ] || sh ./autogen
+  [ -f Makefile ] || ./configure --prefix=/usr --enable-shared
+  make clean
+  make
+
+  cd $SRC/ZenLib/Project/GNU/Library
+  make DESTDIR=$PKG install
+  install -dm 755 $PKG/usr/include/ZenLib
+  install -m 644 $SRC/ZenLib/Source/ZenLib/*.h $PKG/usr/include/ZenLib
+}

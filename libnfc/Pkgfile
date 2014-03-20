@@ -2,7 +2,7 @@
 # URL: https://code.google.com/p/libnfc/
 # Maintainer: omfgroflbbq
 # Packager: omfgroflbbq
-# Depends on: libusb pcsc-lite
+# Depends on: libusb
 
 name=libnfc
 version=1.7.0

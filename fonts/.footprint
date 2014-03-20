@@ -5,5 +5,6 @@ drwxr-xr-x	root/root	usr/share/fonts/X11/
 drwxr-xr-x	root/root	usr/share/fonts/X11/TTF/
 -rw-r--r--	root/root	usr/share/fonts/X11/TTF/DejaVuSerif.ttf
 drwxr-xr-x	root/root	usr/share/fonts/X11/misc/
+-rw-r--r--	root/root	usr/share/fonts/X11/misc/fonts.dir
 -rw-r--r--	root/root	usr/share/fonts/X11/misc/gohufont-11.pcf.gz
 -rw-r--r--	root/root	usr/share/fonts/X11/misc/gohufont-11b.pcf.gz

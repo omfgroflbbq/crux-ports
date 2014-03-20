@@ -1,0 +1,17 @@
+# Description: 'Networking support library for the Lua language'
+# URL: 
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: lua51
+
+name=luabitop
+version=1.0.2
+release=1337
+source=("http://bitop.luajit.org/download/LuaBitOp-$version.tar.gz")
+
+build() {
+  cd LuaBitOp-${version}
+  make INCLUDES=' -I/usr/include' LUA='lua'
+
+  install -Dm 644 bit.so "$PKG/usr/lib/lua/5.2/bit.so"
+}

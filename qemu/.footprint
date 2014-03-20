@@ -18,6 +18,7 @@ drwxr-xr-x	root/root	usr/man/man8/
 -rw-r--r--	root/root	usr/man/man8/qemu-nbd.8.gz
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/qemu/
+-rw-r--r--	root/root	usr/share/qemu/QEMU,tcx.bin
 -rw-r--r--	root/root	usr/share/qemu/acpi-dsdt.aml
 -rw-r--r--	root/root	usr/share/qemu/bamboo.dtb
 -rw-r--r--	root/root	usr/share/qemu/bios.bin
@@ -29,6 +30,7 @@ drwxr-xr-x	root/root	usr/share/qemu/
 -rw-r--r--	root/root	usr/share/qemu/efi-virtio.rom
 drwxr-xr-x	root/root	usr/share/qemu/keymaps/
 -rw-r--r--	root/root	usr/share/qemu/keymaps/common
+-rw-r--r--	root/root	usr/share/qemu/keymaps/cz
 -rw-r--r--	root/root	usr/share/qemu/keymaps/en-us
 -rw-r--r--	root/root	usr/share/qemu/keymaps/modifiers
 -rw-r--r--	root/root	usr/share/qemu/kvmvapic.bin
@@ -60,5 +62,5 @@ drwxr-xr-x	root/root	usr/share/qemu/keymaps/
 -rw-r--r--	root/root	usr/share/qemu/vgabios-stdvga.bin
 -rw-r--r--	root/root	usr/share/qemu/vgabios-vmware.bin
 -rw-r--r--	root/root	usr/share/qemu/vgabios.bin
-drwxr-xr-x	root/root	usr/var/
-drwxr-xr-x	root/root	usr/var/run/
+drwxr-xr-x	root/root	var/
+drwxr-xr-x	root/root	var/run/

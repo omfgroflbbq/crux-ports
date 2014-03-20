@@ -1,0 +1,24 @@
+# Description: Smart and user friendly shell intended mostly for interactive use
+# URL: http://fishshell.com/
+# Maintainer:
+# Packager:
+# Depends on:
+
+name=fish
+version=2.1.0
+release=1337
+source=(http://fishshell.com/files/$version/${name}-${version}.tar.gz)
+
+build() {
+	cd $name-$version
+	
+	./configure \
+	--prefix=/usr \
+	--mandir=/usr/man
+
+	make
+	make DESTDIR=$PKG install
+
+	find $PKG/usr/share/fish/tools/ -type f -exec sed -e "1s|python|python2|" -i {} \;
+	rm -r $PKG/usr/share/doc/
+}

@@ -1,0 +1,21 @@
+# Description: 'Networking support library for the Lua language'
+# URL: 
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: lua51
+
+name=luaexpat
+version=1.2.0
+release=1337
+source=("http://matthewwild.co.uk/projects/$name/${name}-${version}.tar.gz"
+        config
+        patch)
+
+build() {
+  cd ${name}-${version}
+  patch -p1 < $SRC/patch
+  cp -L $SRC/config config
+  make
+  make DESTDIR=$PKG install
+  mv usr/ $PKG/
+}

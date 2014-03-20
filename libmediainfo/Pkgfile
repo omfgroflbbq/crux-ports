@@ -1,0 +1,28 @@
+# Description: "shared library for mediainfo"
+# URL: http://mediainfo.sourceforge.net
+# Maintainer: omfgroflbbq
+# Packager: omfgroflbbq
+# Depends on: libtool automake autoconf libzen
+
+name=libmediainfo
+version=0.7.65
+release=1337
+source=(http://downloads.sourceforge.net/mediainfo/${name}_${version}.tar.bz2)
+
+build() {
+  cd $SRC/MediaInfoLib/Project/GNU/Library
+  sh ./autogen
+  ./configure --prefix=/usr --enable-shared --disable-static --with-libcurl --with-libmms
+  make clean
+  make
+
+  cd $SRC/MediaInfoLib/Project/GNU/Library
+  make DESTDIR=$PKG install
+  for i in MediaInfo MediaInfoDLL; do
+    install -dm 755 $PKG/usr/include/$i
+    install -m 644 $SRC/MediaInfoLib/Source/$i/*.h $PKG/usr/include/$i
+  done
+  install -dm 755 $PKG/usr/lib/pkgconfig
+  install -m 644 $SRC/MediaInfoLib/Project/GNU/Library/libmediainfo.pc $PKG/usr/lib/pkgconfig
+  sed -i -e 's|Version: |Version: '$version'|g' $PKG/usr/lib/pkgconfig/libmediainfo.pc
+}

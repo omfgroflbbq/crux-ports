@@ -1,0 +1,21 @@
+# Description: dfu-programmer is a Device Firmware Update based USB programmer for Atmel chips with a USB bootloader. 
+# URL: http://sourceforge.net/projects/dfu-programmer
+# Maintainer:
+# Packager:
+# Depends on: avr-libc
+
+name=dfu-programmer
+version=0.6.2
+release=1337
+source=(http://downloads.sourceforge.net/${name}/${name}-${version}.tar.gz)
+
+build() {
+	cd ${name}-${version}
+
+  ./configure \
+  --prefix=/usr \
+  --mandir=/usr/man 
+
+  make
+  make DESTDIR=$PKG install
+}

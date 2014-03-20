@@ -5,7 +5,7 @@
 # Depends on: libsdl alsa-lib
 
 name=qemu
-version=1.6.0
+version=1.7.0
 release=1337
 source=(http://wiki.qemu-project.org/download/${name}-${version}.tar.bz2)
 
@@ -15,6 +15,7 @@ build() {
 	./configure \
 	--prefix=/usr \
 	--mandir=/usr \
+	--localstatedir=/var \
 	--libexecdir=/usr/lib/qemu \
 	--target-list=x86_64-softmmu,arm-softmmu\
 	--audio-drv-list=alsa \

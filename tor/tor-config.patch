@@ -1,0 +1,12 @@
+diff -pruN tor-0.2.0.30.orig/src/config/torrc.sample.in tor-0.2.0.30/src/config/torrc.sample.in
+--- tor-0.2.0.30.orig/src/config/torrc.sample.in	2008-07-17 13:50:58.055386603 +0000
++++ tor-0.2.0.30/src/config/torrc.sample.in	2008-07-17 13:55:17.578388974 +0000
+@@ -33,7 +33,7 @@ SocksListenAddress 127.0.0.1 # accept co
+ ## may provide sensitive information to an attacker who obtains the logs.
+ ##
+ ## Send all messages of level 'notice' or higher to @LOCALSTATEDIR@/log/tor/notices.log
+-#Log notice file @LOCALSTATEDIR@/log/tor/notices.log
++Log notice file /var/log/tor/notices.log
+ ## Send every possible message to @LOCALSTATEDIR@/log/tor/debug.log
+ #Log debug file @LOCALSTATEDIR@/log/tor/debug.log
+ ## Use the system log instead of Tor's logfiles
